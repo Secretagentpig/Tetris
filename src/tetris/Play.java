@@ -21,7 +21,7 @@ public class Play extends BasicGameState implements GameState
 	
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException 
 	{
-		gradient = new GradientFill((Main.xSize /3) * 2, 0, Color.white, Main.xSize, Main.ySize, Color.cyan);
+		gradient = new GradientFill((Main.xSize /3) * 2, 0, Color.white, Main.xSize, Main.ySize, Color.magenta);
 		dummy = new Rectangle((Main.xSize /3) * 2, 0, Main.xSize, Main.ySize);
 	}
 	
@@ -29,11 +29,11 @@ public class Play extends BasicGameState implements GameState
 	{
 		g.setColor(Color.cyan);
 		//g.fillRect((Main.xSize / 3) * 2, 0, Main.xSize / 3, Main.ySize);
-		g.draw(dummy, gradient);
+		g.fill(dummy, gradient);
 		if(ticks < 30)
 		{
 			g.setColor(Color.white);
-			g.drawString("Press Start!", Main.xSize / 3 - (g.getFont().getWidth("Press Start!") / 2), 10);
+			g.drawString("Press Start!", Main.xSize / 3 - (g.getFont().getWidth("Press Start!") / 2), Main.ySize / 2);
 		}
 	}
 
