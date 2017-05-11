@@ -6,6 +6,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.ShapeFill;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.fills.GradientFill;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.GameState;
@@ -15,20 +16,24 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Play extends BasicGameState implements GameState 
 {
 	private int ticks;
-	//private boolean secAlt;
+	private GradientFill gradient; 
+	private Rectangle dummy;
 	
 	public void init(GameContainer arg0, StateBasedGame arg1) throws SlickException 
 	{
+		gradient = new GradientFill((Main.xSize /3) * 2, 0, Color.white, Main.xSize, Main.ySize, Color.cyan);
+		dummy = new Rectangle((Main.xSize /3) * 2, 0, Main.xSize, Main.ySize);
 	}
 	
 	public void render(GameContainer arg0, StateBasedGame arg1, Graphics g) throws SlickException 
 	{
 		g.setColor(Color.cyan);
-		g.fillRect((Main.xSize / 3) * 2, 0, Main.xSize / 3, Main.ySize);
+		//g.fillRect((Main.xSize / 3) * 2, 0, Main.xSize / 3, Main.ySize);
+		g.draw(dummy, gradient);
 		if(ticks < 30)
 		{
 			g.setColor(Color.white);
-			g.drawString("Press Start!", Main.xSize / 5, 10);
+			g.drawString("Press Start!", Main.xSize / 3 - (g.getFont().getWidth("Press Start!") / 2), 10);
 		}
 	}
 
